@@ -293,22 +293,14 @@ _3D_BRIGHTNESS = {
 
 # Table 2-5 ITEM List For Status
 STATUS_ERROR = {
-    "NO_ERROR",
-    "0000",
-    "LAMP_ERROR",
-    "0001",
-    "FAN_ERROR",
-    "0002",
-    "COVER_ERROR",
-    "0004",
-    "TEMP_ERROR",
-    "0008",
-    "D5V_ERROR",
-    "0010",
-    "POWER_ERROR",
-    "0020",
-    "TEMP_WARNING",
-    "0040",
+    "NO_ERROR": "0000",
+    "LAMP_ERROR": "0001",
+    "FAN_ERROR": "0002",
+    "COVER_ERROR": "0004",
+    "TEMP_ERROR": "0008",
+    "D5V_ERROR": "0010",
+    "POWER_ERROR": "0020",
+    "TEMP_WARNING": "0040",
 }
 
 POWER_STATUS = {
@@ -321,8 +313,6 @@ POWER_STATUS = {
 }
 
 STATUS_ERROR_2 = {
-    "NO_ERROR",
-    "0000",
-    "HIGHLAND_WARNING",
-    "0020",
+    "NO_ERROR": "0000",
+    "HIGHLAND_WARNING": "0020",
 }

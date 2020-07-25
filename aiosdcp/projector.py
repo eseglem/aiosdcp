@@ -32,9 +32,9 @@ async def send_message(
     ip: str, message: bytes, loop: asyncio.AbstractEventLoop
 ) -> bytes:
     reader, writer = await asyncio.open_connection(ip, 53484, loop=loop)
-    print("Send: %r" % message)
+    print(f"Send: {message}")
     writer.write(message)
     data = await reader.read(20)
-    print("Received: %r" % data.decode())
+    print(f"Received: {data.decode()}")
     writer.close()
     return data
