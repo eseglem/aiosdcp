@@ -94,6 +94,29 @@ COMMANDS = {
     "GET_STATUS_POWER": ("0102", values.STATUS_POWER),
     "GET_STATUS_LAMP_TIMER": ("0113", None),  # Range 0000 - FFFF
     "GET_STATUS_ERROR_2": ("0125", values.STATUS_ERROR_2),
+    # Table 2-6 List for Technical Applications
+    "STATUS": ("00A4", values.OFF_ON),
+    "LANGUAGE": ("00A5", values.LANGUAGES),
+    "MENU_POSITION": ("00A6", values.MENU_POSITION),
+    "HIGH_ALTITUDE_MODE": ("00A7", values.OFF_ON),
+    "POWER_SAVING": ("00AA", values.POWER_SAVING),
+    "TEST_PATTERN": ("00AB", values.OFF_ON),
+    "IMAGE_FLIP": ("00AD", values.IMAGE_FLIP),
+    "LENS_CONTROL": ("00AE", values.OFF_ON),
+    "IR_RECIEVER": ("00AF", values.IR_RECIEVER),
+    "BLANKING_LEFT": ("00B0", values.Zero_Fifty),
+    "BLANKING_RIGHT": ("00B1", values.Zero_Fifty),
+    "BLANKING_UP": ("00B2", values.Zero_Fifty),
+    "BLANKING_DOWN": ("00B3", values.Zero_Fifty),
+    "TRIGGER_SLECT_1": ("00C2", values.TRIGGER_SLECT),
+    "TRIGGER_SELECT_2": ("00C3", values.TRIGGER_SLECT),
+    "ANAMORPHIC_LENS": ("00C4", values.ANAMORPHIC_LENS),
+    "BLANKING": ("00C8", values.OFF_ON),
+    "PANEL_ALIGNMENT": ("00EC", values.OFF_ON),
+    "SET_SETTINGS_RESET": ("016A", values.SET_SETTINGS_RESET),
+    "SET_MAINTENANCE_COMPLETE": ("01D2", values.SET_MAINTENANCE_COMPLETE),
+    # "SET_MAINSOFTWARE_VERSION": ("011H",),
+    # "FPGA_DEVICE_VERSION": ("013A",),
 }
 
 COMMANDS_REVERSE = {value[0]: key for key, value in COMMANDS.items()}

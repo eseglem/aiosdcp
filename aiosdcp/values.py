@@ -10,6 +10,7 @@ def new_clipper(smallest: int, largest: int) -> Callable:
 
 
 Zero_OneHundred = new_clipper(0, 100)
+Zero_Fifty = new_clipper(0, 50)
 NegThirty_Thirty = new_clipper(-30, 30)
 NegFifty_Fifty = new_clipper(-50, 50)
 NegTwo_Two = new_clipper(-2, 2)
@@ -218,3 +219,93 @@ class STATUS_POWER(Enum):
 class STATUS_ERROR_2(Enum):
     NO_ERROR = "0000"
     HIGHLAND_WARNING = "0020"
+
+
+class ERROR_CODE(Enum):
+    ITEM_ERROR = "0101"
+    INVALID_REQUEST_ITEM = "0102"
+    INVALID_LENGTH = "0103"
+    INVALID_DATA = "0104"
+    SHORT_DATA = "0105"
+    NOT_APPLICABLE_ITEM = "0180"
+    DIFFERENT_COMMUNITY = "0201"
+    INVALID_VERSION = "1001"
+    INVALID_CATEGORY = "1002"
+    INVALID_REQUEST = "1003"
+    SHORT_HEADER = "1011"
+    SHORT_COMMUNITY = "1012"
+    SHORT_COMMAND = "1013"
+    NETWORK_ERROR = "2001"
+    COMM_ERROR = "F001"
+    CHECK_SUM_ERROR = "F010"
+    FRAMING_ERROR = "F020"
+    PARITY_ERROR = "F030"
+    OVER_RUN_ERROR = "F040"
+    OTHER_COMM_ERROR = "F050"
+    UNKNOWN_RESPONSE = "F0F0"
+    NVRAM_READ_ERROR = "F110"
+    NVRAM_WRITE_ERROR = "F120"
+
+
+class LANGUAGES(Enum):
+    ENGLISH = "0000"
+    DUTCH = "0001"
+    FRENCH = "0002"
+    ITALIAN = "0003"
+    GERMAN = "0004"
+    SPANISH = "0005"
+    PORTUGUESE = "0006"
+    RUSSIAN = "0007"
+    SWEDISH = "0008"
+    NORWEGIAN = "0009"
+    TURKISH = "0010"
+    POLISH = "0012"
+    JAPANESE = "000A"
+    CHINESE_SIMPLIFIED = "000B"
+    CHINESE_TRADITIONAL = "000C"
+    KOREAN = "000D"
+    THAI = "000E"
+    ARABIC = "000F"
+
+
+class MENU_POSITION(Enum):
+    BOTTOM_LEFT = "0000"
+    CENTER = "0001"
+
+
+class POWER_SAVING(Enum):
+    OFF = "0000"
+    STANDBY = "0002"
+
+
+class IMAGE_FLIP(Enum):
+    OFF = "0000"
+    HV = "0001"
+    H = "0002"
+    V = "0003"
+
+
+class IR_RECIEVER(Enum):
+    FRONT_REAR = "0000"
+    FRONT = "0001"
+    REAR = "0002"
+
+
+class TRIGGER_SLECT(Enum):
+    OFF = "0000"
+    POWER = "0001"
+    V_STRETCH = "0002"
+    _2_35_ZOOM = "0003"
+
+
+class ANAMORPHIC_LENS(Enum):
+    _1_24X = "0001"
+    _1_32X = "0000"
+
+
+class SET_SETTINGS_RESET(Enum):
+    PICTURE_DATA = "0000"
+
+
+class MAINTENANCE_COMPLE(Enum):
+    LAMP = "0001"

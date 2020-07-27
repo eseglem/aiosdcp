@@ -4,6 +4,7 @@ from enum import Enum, EnumMeta
 from typing import Union
 
 import commands
+import values
 
 
 async def int_to_data(i: int) -> str:
@@ -26,7 +27,7 @@ async def create_message(
     # Probably never need to change version or category, but available if needed.
     # Zero pad the data length to two characters
     data_length = f"{(len(data) // 2):02}"
-    command_hex, checker = command
+    command_hex, checker = commands.COMMANDS[command]
     hex_string = (
         f"{version}{category}{community}{action.value}{command_hex}{data_length}{data}"
     )
@@ -43,23 +44,25 @@ async def parse_message(message: bytes) -> dict:
     response["success"] = message[12:14] == "01"
     response["command"] = commands.COMMANDS_REVERSE[message[14:18]]
     response["data_length"] = int(message[18:20], 16)
-
-    data = message[-response["data_length"] * 2 :]
-    if not response["success"]:
-        response["data"] = data
-    elif response["data_length"] > 0:
-        response["data"] = await parse_data(response["command"], data)
+    if response["data_length"] > 0:
+        data = message[-response["data_length"] * 2 :]
+        if not response["success"]:
+            try:
+                response["data"] = values.ERROR_CODE(data)
+            except ValueError:
+                response["data"] = data
+        else:
+            response["data"] = await parse_data(response["command"], data)
     else:
         response["data"] = None
     return response
 
 
 async def parse_data(command: str, data: bytes) -> Union[Enum, int]:
-    print(command, data)
+    # print(command, data)
     if command == "GET_STATUS_LAMP_TIMER":
         return int(data, 16)
     checker = commands.COMMANDS[command][1]
-    print(type(checker))
     if isinstance(checker, EnumMeta):
         return checker(data)
     if callable(checker):
@@ -72,9 +75,9 @@ async def send_message(
 ) -> bytes:
     # TODO: Modern way of doing this
     reader, writer = await asyncio.open_connection(ip, 53484, loop=loop)
-    print(f"Send: {message}")
+    # print(f"Send: {message}")
     writer.write(message)
     data = await reader.read(20)
-    print(f"Received: {data}")
+    # print(f"Received: {data}")
     writer.close()
     return data
